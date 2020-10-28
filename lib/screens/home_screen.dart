@@ -14,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<MapEntry<String, double>> quotes = [];
+
   _downloadExchangeRates() async {
     Currency currency;
     String apiUrl =
@@ -49,17 +51,26 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Currency Exchanger'),
       ),
-      body: isDownloading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView.builder(
-              itemBuilder: (context, index) {
-                return _buildCurrencyCard(
-                    quotes[index].key, quotes[index].value);
-              },
-              itemCount: quotes != null ? quotes.length : 0,
-            ),
+      body: Column(
+        children: [
+          TextField(
+            onChanged: (text) {},
+          ),
+          Expanded(
+            child: isDownloading
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : ListView.builder(
+                    itemBuilder: (context, index) {
+                      return _buildCurrencyCard(
+                          quotes[index].key, quotes[index].value);
+                    },
+                    itemCount: quotes != null ? quotes.length : 0,
+                  ),
+          ),
+        ],
+      ),
     );
   }
 
