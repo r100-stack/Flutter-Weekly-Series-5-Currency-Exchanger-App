@@ -9,6 +9,8 @@ class CurrencyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO (8): Take the dynamic values using the quote variable
+
     return Container(
       margin: const EdgeInsets.symmetric(
           vertical: kDefaultMargin / 2, horizontal: kDefaultMargin / 2),
@@ -20,16 +22,16 @@ class CurrencyCard extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           child: Text(
-            'GBP',
+            quote.key.substring(3, 6),
           ),
           backgroundColor: Theme.of(context).accentColor,
         ),
         title: Text(
-          'British Pounds',
+          Currency.currencyList[quote.key.substring(3, 6)],
           style: TextStyle(fontSize: 18.0),
         ),
         trailing: Text(
-          '14.983',
+          quote.value.toStringAsFixed(3),
           style: TextStyle(
               color: Theme.of(context).accentColor,
               fontWeight: FontWeight.w600,
