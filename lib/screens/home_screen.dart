@@ -70,9 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-
-            // TODO (7): Wrap the TextField with Padding.all = kDefaultMargin / 2
-
             Padding(
               padding: const EdgeInsets.symmetric(
                   horizontal: kDefaultMargin / 2, vertical: kDefaultMargin / 2),
@@ -84,9 +81,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-
-                    // TODO (6): Add a suffix to the TextField to clear the text
-
                     suffixIcon: IconButton(
                       icon: Icon(Icons.clear),
                       onPressed: () {
@@ -104,10 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     .of(context)
                     .textTheme
                     .headline6),
-
-            // TODO (8): Add a SizedBox of height = kDefaultMargin / 2
             const SizedBox(height: kDefaultMargin / 2),
-
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(kDefaultBorderRadius),
