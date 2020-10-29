@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
           primarySwatch: Colors.blue,
+          // TODO (14): brightness = Brightness.dark
+          // TODO (15): accentColor = Colors.yellow
         ),
         home: HomeScreen(),
       );
