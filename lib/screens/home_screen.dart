@@ -25,8 +25,30 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // TODO (1): Wrap the Column in a SafeArea()
       body: Column(
         children: [
+
+          // TODO (2): Add a TextField()
+          // TODO (3): TextField.controller = controller
+          // TODO (4): TextField.decoration = InputDecoration
+          // TODO (5): InputDecoration.hintText = 'Filter...'
+          // TODO (6): InputDecoration.labelText = 'Filter'
+          // TODO (7): InputDecoration.border = OutlineInputBorder
+          // TODO (8): OutlineInputBorder.borderRadius = BorderRadius.circular(20.0)
+          // TODO (9): TextField.onChanged = FilterUtils.filterQuotes(context, text, quotes)
+          // TextField(
+          //   controller: controller,
+          //   decoration: InputDecoration(
+          //     hintText: 'Filter ...',
+          //     labelText: 'Filter',
+          //     border: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(20.0),
+          //     ),
+          //   onChanged: (text) =>
+          //     FilterUtils.filterQuotes(context, text, quotes),
+          //   ),
+
           Text('1 USD equals ...',
               style: Theme.of(context).textTheme.headline6),
           Expanded(
