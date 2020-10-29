@@ -26,14 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO (12): Create variables for currency, quotes, filteredQuotes, and isDownloading
-    // TODO (13): Assign the correct values to all the variables
-    // Currency currency = Provider.of<CurrencyBloc>(context).currency;
-    // List<MapEntry<String, double>> quotes = currency?.quotes?.entries?.toList();
-    // List<MapEntry<String, double>> filteredQuotes =
-    //     Provider.of<DisplayBloc>(context).quotes;
-    // bool isDownloading = Provider.of<CurrencyBloc>(context).isDownloading;
-
     Currency currency = Provider.of<CurrencyBloc>(context).currency;
     List<MapEntry<String, double>> quotes = currency?.quotes?.entries?.toList();
     List<MapEntry<String, double>> filteredQuotes =
@@ -61,30 +53,16 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(kDefaultBorderRadius),
-
-                // TODO (14): If Provider's isDownloading = true, show CircularLoadingIndicator
-                // TODO (15): Else, show list view
-
-                // TODO (16): Wrap the entire child of Expanded with ClipRRect (kDefaultBorderRadius)
-
                 child: isDownloading
                     ? Center(
                   child: CircularProgressIndicator(),
                 )
                     : ListView.builder(
                     itemBuilder: (context, index) {
-
-                      // TODO (17): If text = empty, pass appropriate "filteredQuotes"
-                      // TODO (18): Else return appropriate "quotes"
-
                       return controller.text.isNotEmpty
                           ? CurrencyCard(quote: filteredQuotes[index])
                           : CurrencyCard(quote: quotes[index]);
                     },
-
-                    // TODO (19): If text = empty, pass filteredQuotes.length
-                    // TODO (20): Else return appropriate quotes.length
-
                     itemCount: controller.text.isNotEmpty
                         ? (filteredQuotes != null
                         ? filteredQuotes.length

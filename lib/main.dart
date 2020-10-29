@@ -12,8 +12,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // TODO (10): Wrap MaterialApp with MultiProvider
-    // TODO (11): Specify your providers: CurrencyBloc and DisplayBloc
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CurrencyBloc()),
