@@ -16,4 +16,13 @@ class DisplayBloc extends ChangeNotifier {
   //   _quotes = quotes;
   //   notifyListeners();
   // }
+
+  List<MapEntry<String, double>>  _quotes = [];
+
+  List<MapEntry<String, double>> get quotes => _quotes;
+
+  updateQuotes(List<MapEntry<String, double>> quotes) {
+    _quotes = quotes;
+    notifyListeners();
+  }
 }

@@ -23,4 +23,19 @@ class CurrencyBloc extends ChangeNotifier{
   //   this.isDownloading = isDownloading;
   //   notifyListeners();
   // }
+
+  Currency _currency;
+  bool isDownloading = true;
+
+  Currency get currency => _currency;
+
+  updateCurrency(Currency currency) {
+    _currency = currency;
+    notifyListeners();
+  }
+
+  updateIsDownloading(bool isDownloading) {
+    this.isDownloading = isDownloading;
+    notifyListeners();
+  }
 }
