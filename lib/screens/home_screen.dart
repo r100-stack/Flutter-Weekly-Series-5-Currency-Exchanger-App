@@ -60,6 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
+
+            // TODO (7): Wrap the TextField with Padding.all = kDefaultMargin / 2
+
             TextField(
               controller: controller,
               decoration: InputDecoration(
@@ -68,12 +71,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
+
+                // TODO (6): Add a suffix to the TextField to clear the text
+                // suffixIcon: IconButton(
+                //   icon: Icon(Icons.clear),
+                //   onPressed: () {
+                //     controller.clear();
+                //     Provider.of<DisplayBloc>(context, listen: false).updateQuotes([]);
+                //   },
+                // )
+
               ),
               onChanged: (text) =>
                   FilterUtils.filterQuotes(context, text, quotes),
             ),
             Text('1 USD equals ...',
                 style: Theme.of(context).textTheme.headline6),
+
+            // TODO (8): Add a SizedBox of height = kDefaultMargin / 2
+
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(kDefaultBorderRadius),
