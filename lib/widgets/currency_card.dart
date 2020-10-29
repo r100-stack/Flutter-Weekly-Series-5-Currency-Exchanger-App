@@ -9,8 +9,6 @@ class CurrencyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO (8): Take the dynamic values using the quote variable
-
     return Container(
       margin: const EdgeInsets.symmetric(
           vertical: kDefaultMargin / 2, horizontal: kDefaultMargin / 2),

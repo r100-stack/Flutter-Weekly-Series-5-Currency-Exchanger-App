@@ -20,16 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController controller = TextEditingController();
 
   _downloadExchangeRates() async {
-    // TODO (2): Set isDownloading of Provider to true
-
-    // TODO (3): Make a request to API's url
-    // TODO (4): Parse the response
-    // TODO (5): Save response in a currency variable using the factory constructor
-
-    // TODO (6): If currency != null, update the currency in the Provider
-
-    // TODO (7): Set isDownloading of Provider to false
-
     Provider.of<CurrencyBloc>(context, listen: false).isDownloading = true;
 
     Currency currency;
