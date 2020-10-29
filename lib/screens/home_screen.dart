@@ -4,6 +4,7 @@ import 'package:currency_exchanger_5/models/currency.dart';
 import 'package:currency_exchanger_5/utils/filter_utils.dart';
 import 'package:currency_exchanger_5/widgets/currency_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -24,6 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO (12): Create variables for currency, quotes, filteredQuotes, and isDownloading
+    // TODO (13): Assign the correct values to all the variables
+    // Currency currency = Provider.of<CurrencyBloc>(context).currency;
+    // List<MapEntry<String, double>> quotes = currency?.quotes?.entries?.toList();
+    // List<MapEntry<String, double>> filteredQuotes =
+    //     Provider.of<DisplayBloc>(context).quotes;
+    // bool isDownloading = Provider.of<CurrencyBloc>(context).isDownloading;
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -43,11 +52,22 @@ class _HomeScreenState extends State<HomeScreen> {
             Text('1 USD equals ...',
                 style: Theme.of(context).textTheme.headline6),
             Expanded(
+
+              // TODO (14): If Provider's isDownloading = true, show CircularLoadingIndicator
+              // TODO (15): Else, show list view
+
+              // TODO (16): Wrap the entire child of Expanded with ClipRRect (kDefaultBorderRadius)
+
               child: ListView.builder(
                   itemBuilder: (context, index) {
+                    // TODO (17): If text = empty, pass appropriate "filteredQuotes"
+                    // TODO (18): Else return appropriate "quotes"
                     return CurrencyCard();
                   },
-                  itemCount: 1),
+
+                  // TODO (19): If text = empty, pass filteredQuotes.length
+                  // TODO (20): Else return appropriate quotes.length
+                  itemCount: 0),
             ),
           ],
         ),

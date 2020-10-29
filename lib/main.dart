@@ -2,6 +2,7 @@ import 'package:currency_exchanger_5/blocs/currency_bloc.dart';
 import 'package:currency_exchanger_5/blocs/display_bloc.dart';
 import 'package:currency_exchanger_5/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // TODO (10): Wrap MaterialApp with MultiProvider
+    // TODO (11): Specify your providers: CurrencyBloc and DisplayBloc
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
