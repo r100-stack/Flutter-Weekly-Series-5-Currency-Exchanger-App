@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     .textTheme
                     .headline6),
 
-            // TODO (7): Add a SizedBox of height = kDefaultMargin / 2
+            // TODO (8): Add a SizedBox of height = kDefaultMargin / 2
             const SizedBox(height: kDefaultMargin / 2),
 
             Expanded(
