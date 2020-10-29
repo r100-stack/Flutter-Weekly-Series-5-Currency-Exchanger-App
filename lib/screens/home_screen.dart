@@ -71,9 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
 
-            // TODO (6): Wrap the TextField with Padding.all = kDefaultMargin / 2
-
-            // TODO (7): Add a suffix to the TextField to clear the text
+            // TODO (7): Wrap the TextField with Padding.all = kDefaultMargin / 2
 
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -86,6 +84,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
+
+                    // TODO (8): Add a suffix to the TextField to clear the text
+
                     suffixIcon: IconButton(
                       icon: Icon(Icons.clear),
                       onPressed: () {
