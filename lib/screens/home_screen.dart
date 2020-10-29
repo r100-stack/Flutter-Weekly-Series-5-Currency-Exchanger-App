@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:currency_exchanger_5/blocs/currency_bloc.dart';
+import 'package:currency_exchanger_5/blocs/display_bloc.dart';
 import 'package:currency_exchanger_5/constants.dart';
 import 'package:currency_exchanger_5/models/currency.dart';
+import 'package:currency_exchanger_5/utils/filter_utils.dart';
+import 'package:currency_exchanger_5/widgets/currency_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -15,8 +18,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<MapEntry<String, double>> quotes = [];
+  TextEditingController controller = TextEditingController();
 
   _downloadExchangeRates() async {
+    Provider.of<CurrencyBloc>(context, listen: false).isDownloading = true;
+
     Currency currency;
     String apiUrl =
         'http://api.currencylayer.com/live?access_key=db1c45a37425c2a4505827552618dd09&format=1';
@@ -33,6 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
       Provider.of<CurrencyBloc>(context, listen: false)
           .updateCurrency(currency);
     }
+
+    Provider.of<CurrencyBloc>(context, listen: false).isDownloading = false;
   }
 
   @override
@@ -45,61 +53,54 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Currency currency = Provider.of<CurrencyBloc>(context).currency;
     List<MapEntry<String, double>> quotes = currency?.quotes?.entries?.toList();
+    List<MapEntry<String, double>> filteredQuotes =
+        Provider.of<DisplayBloc>(context).quotes;
     bool isDownloading = Provider.of<CurrencyBloc>(context).isDownloading;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Currency Exchanger'),
-      ),
-      body: Column(
-        children: [
-          TextField(
-            onChanged: (text) {},
-          ),
-          Expanded(
-            child: isDownloading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : ListView.builder(
-                    itemBuilder: (context, index) {
-                      return _buildCurrencyCard(
-                          quotes[index].key, quotes[index].value);
-                    },
-                    itemCount: quotes != null ? quotes.length : 0,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: kDefaultMargin / 2, vertical: kDefaultMargin / 2),
+              child: TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                  hintText: 'Filter ...',
+                  labelText: 'Filter',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(kDefaultBorderRadius),
                   ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  _buildCurrencyCard(String currency, double quote) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-          vertical: kDefaultMargin / 2, horizontal: kDefaultMargin / 2),
-      padding: const EdgeInsets.symmetric(
-          horizontal: kDefaultMargin / 2, vertical: kDefaultMargin / 2),
-      decoration: BoxDecoration(
-          color: Colors.black45,
-          borderRadius: BorderRadius.circular(kDefaultBorderRadius)),
-      child: ListTile(
-        leading: CircleAvatar(
-          child: Text(
-            currency.substring(3, 6),
-          ),
-          backgroundColor: Theme.of(context).accentColor,
-        ),
-        title: Text(
-          Currency.currencyList[currency.substring(3, 6)],
-          style: TextStyle(fontSize: 18.0),
-        ),
-        trailing: Text(
-          quote.toStringAsFixed(3),
-          style: TextStyle(
-              color: Theme.of(context).accentColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 18.0),
+                ),
+                onChanged: (text) =>
+                    FilterUtils.filterQuotes(context, text, quotes),
+              ),
+            ),
+            Text('1 USD equals ...',
+                style: Theme.of(context).textTheme.headline6),
+            const SizedBox(height: kDefaultMargin / 2),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(kDefaultBorderRadius),
+                child: isDownloading
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : ListView.builder(
+                        itemBuilder: (context, index) {
+                          return controller.text.isNotEmpty
+                              ? CurrencyCard(quote: filteredQuotes[index])
+                              : CurrencyCard(quote: quotes[index]);
+                        },
+                        itemCount: controller.text.isNotEmpty
+                            ? (filteredQuotes != null
+                                ? filteredQuotes.length
+                                : 0)
+                            : (quotes != null ? quotes.length : 0)),
+              ),
+            ),
+          ],
         ),
       ),
     );

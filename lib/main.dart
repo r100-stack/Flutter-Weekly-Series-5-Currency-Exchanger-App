@@ -1,4 +1,5 @@
 import 'package:currency_exchanger_5/blocs/currency_bloc.dart';
+import 'package:currency_exchanger_5/blocs/display_bloc.dart';
 import 'package:currency_exchanger_5/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => CurrencyBloc())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => CurrencyBloc()),
+        ChangeNotifierProvider(create: (_) => DisplayBloc()),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -26,7 +30,8 @@ class MyApp extends StatelessWidget {
             // Notice that the counter didn't reset back to zero; the application
             // is not restarted.
             primarySwatch: Colors.blue,
-            brightness: Brightness.dark),
+            brightness: Brightness.dark,
+            accentColor: Colors.yellow),
         home: HomeScreen(),
       ),
     );

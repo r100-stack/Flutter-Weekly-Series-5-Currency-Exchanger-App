@@ -1,12 +1,11 @@
 import 'package:currency_exchanger_5/models/currency.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CurrencyBloc extends ChangeNotifier{
   Currency _currency;
-  bool _isDownloading = false;
+  bool isDownloading = true;
 
   Currency get currency => _currency;
-  bool get isDownloading => _isDownloading;
 
   updateCurrency(Currency currency) {
     _currency = currency;
@@ -14,7 +13,7 @@ class CurrencyBloc extends ChangeNotifier{
   }
 
   updateIsDownloading(bool isDownloading) {
-    _isDownloading = true;
+    this.isDownloading = isDownloading;
     notifyListeners();
   }
 }
