@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
+      title: 'Flutter Demo',
+      theme: ThemeData(
           // This is the theme of your application.
           //
           // Try running your application with "flutter run". You'll see the
@@ -24,8 +24,11 @@ class MyApp extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
           primarySwatch: Colors.blue,
-        ),
-        home: HomeScreen(),
-      );
+          // TODO (14): brightness = Brightness.dark
+          // TODO (15): accentColor = Colors.yellow
+          brightness: Brightness.dark,
+          accentColor: Colors.yellow),
+      home: HomeScreen(),
+    );
   }
 }
