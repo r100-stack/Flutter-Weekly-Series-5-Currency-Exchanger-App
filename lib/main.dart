@@ -14,6 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO (10): Wrap MaterialApp with MultiProvider
     // TODO (11): Specify your providers: CurrencyBloc and DisplayBloc
+    // providers: [
+    //   ChangeNotifierProvider(create: (_) => CurrencyBloc()),
+    //   ChangeNotifierProvider(create: (_) => DisplayBloc()),
+    // ],
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

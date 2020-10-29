@@ -69,6 +69,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   // TODO (20): Else return appropriate quotes.length
                   itemCount: 0),
             ),
+
+            // Expanded(
+            //   child: ClipRRect(
+            //     borderRadius: BorderRadius.circular(kDefaultBorderRadius),
+            //     child: isDownloading
+            //         ? Center(
+            //       child: CircularProgressIndicator(),
+            //     )
+            //         : ListView.builder(
+            //         itemBuilder: (context, index) {
+            //           return controller.text.isNotEmpty
+            //               ? CurrencyCard(quote: filteredQuotes[index])
+            //               : CurrencyCard(quote: quotes[index]);
+            //         },
+            //         itemCount: controller.text.isNotEmpty
+            //             ? (filteredQuotes != null
+            //             ? filteredQuotes.length
+            //             : 0)
+            //             : (quotes != null ? quotes.length : 0)),
+            //   ),
+            // ),
           ],
         ),
       ),
