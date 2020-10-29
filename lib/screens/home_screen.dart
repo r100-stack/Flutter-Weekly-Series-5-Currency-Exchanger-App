@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
 
-                    // TODO (8): Add a suffix to the TextField to clear the text
+                    // TODO (6): Add a suffix to the TextField to clear the text
 
                     suffixIcon: IconButton(
                       icon: Icon(Icons.clear),
