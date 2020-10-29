@@ -5,12 +5,6 @@ import 'package:currency_exchanger_5/utils/filter_utils.dart';
 import 'package:currency_exchanger_5/widgets/currency_card.dart';
 import 'package:flutter/material.dart';
 
-// TODO (1): Create a file under lib called constants.dart
-
-// Within lib/constants.dart
-// TODO (2): Create constant for kDefaultMargin = 20.0
-// TODO (3): Create constant for kDefaultBorderRadius = 20.0
-
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -51,9 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ListView.builder(
                   itemBuilder: (context, index) {
-
-                    // TODO (4): Return CurrencyCard()
-
                     return CurrencyCard();
                   },
                   itemCount: 1),
