@@ -7,6 +7,9 @@ import 'package:currency_exchanger_5/widgets/currency_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -27,26 +30,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
     // TODO (7): Set isDownloading of Provider to false
 
-    // Provider.of<CurrencyBloc>(context, listen: false).isDownloading = true;
-    //
-    // Currency currency;
-    // String apiUrl =
-    //     'http://api.currencylayer.com/live?access_key=db1c45a37425c2a4505827552618dd09&format=1';
-    //
-    // try {
-    //   http.Response response = await http.get(apiUrl);
-    //   var body = jsonDecode(response.body);
-    //   currency = Currency.fromJson(body);
-    // } catch (ex) {
-    //   print(ex);
-    // }
-    //
-    // if (currency != null) {
-    //   Provider.of<CurrencyBloc>(context, listen: false)
-    //       .updateCurrency(currency);
-    // }
-    //
-    // Provider.of<CurrencyBloc>(context, listen: false).isDownloading = false;
+    Provider.of<CurrencyBloc>(context, listen: false).isDownloading = true;
+
+    Currency currency;
+    String apiUrl =
+        'http://api.currencylayer.com/live?access_key=db1c45a37425c2a4505827552618dd09&format=1';
+
+    try {
+      http.Response response = await http.get(apiUrl);
+      var body = jsonDecode(response.body);
+      currency = Currency.fromJson(body);
+    } catch (ex) {
+      print(ex);
+    }
+
+    if (currency != null) {
+      Provider.of<CurrencyBloc>(context, listen: false)
+          .updateCurrency(currency);
+    }
+
+    Provider.of<CurrencyBloc>(context, listen: false).isDownloading = false;
   }
 
   @override
