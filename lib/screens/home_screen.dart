@@ -45,6 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ListView.builder(
                   itemBuilder: (context, index) {
+
+                    // TODO (1): Return CurrencyCard()
+
                     return null;
                   },
                   itemCount: 0),
