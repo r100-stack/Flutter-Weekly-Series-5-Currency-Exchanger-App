@@ -16,7 +16,38 @@ class _HomeScreenState extends State<HomeScreen> {
   List<MapEntry<String, double>> quotes = [];
   TextEditingController controller = TextEditingController();
 
-  _downloadExchangeRates() async {}
+  _downloadExchangeRates() async {
+    // TODO (2): Set isDownloading of Provider to true
+
+    // TODO (3): Make a request to API's url
+    // TODO (4): Parse the response
+    // TODO (5): Save response in a currency variable using the factory constructor
+
+    // TODO (6): If currency != null, update the currency in the Provider
+
+    // TODO (7): Set isDownloading of Provider to false
+
+    // Provider.of<CurrencyBloc>(context, listen: false).isDownloading = true;
+    //
+    // Currency currency;
+    // String apiUrl =
+    //     'http://api.currencylayer.com/live?access_key=db1c45a37425c2a4505827552618dd09&format=1';
+    //
+    // try {
+    //   http.Response response = await http.get(apiUrl);
+    //   var body = jsonDecode(response.body);
+    //   currency = Currency.fromJson(body);
+    // } catch (ex) {
+    //   print(ex);
+    // }
+    //
+    // if (currency != null) {
+    //   Provider.of<CurrencyBloc>(context, listen: false)
+    //       .updateCurrency(currency);
+    // }
+    //
+    // Provider.of<CurrencyBloc>(context, listen: false).isDownloading = false;
+  }
 
   @override
   void initState() {
