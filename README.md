@@ -17,7 +17,7 @@ See how much 1 USD equals in almost all major currencies!
 
 ### Screenshot
 
-<img src="assets/screenshot.gif">
+<img src="assets/screenshot_3.gif">
 
 ### Structure
 
@@ -36,3 +36,28 @@ See how much 1 USD equals in almost all major currencies!
 [How to compare branches on Android Studio](https://medium.com/better-programming/how-to-use-git-in-android-studio-part-2-93cec67b91b0#:~:text=Go%20to%20%E2%80%9CVSC%E2%80%9D%20%2D%3E,choose%20%E2%80%9CCompare%20with%20current%E2%80%9D.&text=A%20popup%20%E2%80%9CCompare%20feature%20with,to%20commits%2C%20files%20to%20files.)
 
 [How to compare branches on Android Studio](https://stackoverflow.com/a/57833947/11547064)
+
+### Steps
+
+1. Setup app
+<img src="assets/screenshot_v1.png">
+2. Creating CurrencyCard and setting up the dark theme
+<img src="assets/screenshot_v2.png">
+3. Implement Advanced State Management for storing the currency information
+<img src="assets/screenshot_v3.png">
+4. Downloading exchange rates from the [Currency Layer API](https://currencylayer.com/)
+<img src="assets/screenshot_v4.gif">
+5. Adding filtering functionality
+<img src="assets/screenshot_3.gif">
+
+### Skills Learned
+
+* Advanced http requests
+* JSON
+* ImageCarousel
+* CachedNetworkImages
+* Card
+* ListTile
+* Icon
+* BorderRadius
+* ClipRRect
