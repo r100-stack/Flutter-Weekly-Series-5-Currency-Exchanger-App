@@ -52,12 +52,15 @@ See how much 1 USD equals in almost all major currencies!
 
 ### Skills Learned
 
+* Advanced State Management
+  * Provider package 
 * Advanced http requests
-* JSON
-* ImageCarousel
-* CachedNetworkImages
-* Card
+* JSON parsing
+  * jsonDecode (dart:convert)
 * ListTile
-* Icon
+  * leading
+  * title
+  * trailing
+* CircleAvatar
 * BorderRadius
-* ClipRRect
+* Advanced Dart coding to filter results
