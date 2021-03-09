@@ -49,6 +49,8 @@ See how much 1 USD equals in almost all major currencies!
 <img src="assets/screenshot_v4.gif">
 5. Adding filtering functionality
 <img src="assets/screenshot_3.gif">
+6. Dynamic screen width for large screens
+<img src="assets/screenshot_6.gif">
 
 ### Skills Learned
 
@@ -64,3 +66,5 @@ See how much 1 USD equals in almost all major currencies!
 * CircleAvatar
 * BorderRadius
 * Advanced Dart coding to filter results
+* Dynamic screen widths for large screens
+* Flutter Web
