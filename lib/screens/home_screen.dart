@@ -4,6 +4,7 @@ import 'package:currency_exchanger_5/constants.dart';
 import 'package:currency_exchanger_5/models/currency.dart';
 import 'package:currency_exchanger_5/utils/filter_utils.dart';
 import 'package:currency_exchanger_5/widgets/currency_card.dart';
+import 'package:currency_exchanger_5/widgets/dynamic_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,9 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController controller = TextEditingController();
 
   _downloadExchangeRates() async {
-    Provider
-        .of<CurrencyBloc>(context, listen: false)
-        .isDownloading = true;
+    Provider.of<CurrencyBloc>(context, listen: false).isDownloading = true;
 
     Currency currency;
     String apiUrl =
@@ -41,9 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           .updateCurrency(currency);
     }
 
-    Provider
-        .of<CurrencyBloc>(context, listen: false)
-        .isDownloading = false;
+    Provider.of<CurrencyBloc>(context, listen: false).isDownloading = false;
   }
 
   @override
@@ -54,69 +51,65 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Currency currency = Provider
-        .of<CurrencyBloc>(context)
-        .currency;
+    Currency currency = Provider.of<CurrencyBloc>(context).currency;
     List<MapEntry<String, double>> quotes = currency?.quotes?.entries?.toList();
     List<MapEntry<String, double>> filteredQuotes =
-        Provider
-            .of<DisplayBloc>(context)
-            .quotes;
-    bool isDownloading = Provider
-        .of<CurrencyBloc>(context)
-        .isDownloading;
+        Provider.of<DisplayBloc>(context).quotes;
+    bool isDownloading = Provider.of<CurrencyBloc>(context).isDownloading;
 
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: kDefaultMargin / 2, vertical: kDefaultMargin / 2),
-              child: TextField(
-                controller: controller,
-                decoration: InputDecoration(
-                    hintText: 'Filter ...',
-                    labelText: 'Filter',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.clear),
-                      onPressed: () {
-                        controller.clear();
-                        Provider.of<DisplayBloc>(context, listen: false).updateQuotes([]);
-                      },
-                    )
+            DynamicContainer(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: kDefaultMargin / 2,
+                    vertical: kDefaultMargin / 2),
+                child: TextField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                      hintText: 'Filter ...',
+                      labelText: 'Filter',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.clear),
+                        onPressed: () {
+                          controller.clear();
+                          Provider.of<DisplayBloc>(context, listen: false)
+                              .updateQuotes([]);
+                        },
+                      )),
+                  onChanged: (text) =>
+                      FilterUtils.filterQuotes(context, text, quotes),
                 ),
-                onChanged: (text) =>
-                    FilterUtils.filterQuotes(context, text, quotes),
               ),
             ),
             Text('1 USD equals ...',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .headline6),
+                style: Theme.of(context).textTheme.headline6),
             const SizedBox(height: kDefaultMargin / 2),
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(kDefaultBorderRadius),
                 child: isDownloading
                     ? Center(
-                  child: CircularProgressIndicator(),
-                )
+                        child: CircularProgressIndicator(),
+                      )
                     : ListView.builder(
-                    itemBuilder: (context, index) {
-                      return controller.text.isNotEmpty
-                          ? CurrencyCard(quote: filteredQuotes[index])
-                          : CurrencyCard(quote: quotes[index]);
-                    },
-                    itemCount: controller.text.isNotEmpty
-                        ? (filteredQuotes != null
-                        ? filteredQuotes.length
-                        : 0)
-                        : (quotes != null ? quotes.length : 0)),
+                        itemBuilder: (context, index) {
+                          return DynamicContainer(
+                            child: controller.text.isNotEmpty
+                                ? CurrencyCard(quote: filteredQuotes[index])
+                                : CurrencyCard(quote: quotes[index]),
+                          );
+                        },
+                        itemCount: controller.text.isNotEmpty
+                            ? (filteredQuotes != null
+                                ? filteredQuotes.length
+                                : 0)
+                            : (quotes != null ? quotes.length : 0)),
               ),
             ),
           ],
